@@ -64,6 +64,7 @@ public class CustomerControllerTest {
         List<Customer> customers = customerController.getCustomers();
 
         //assert
+        assertThat(customers).isNotNull();
         assertThat(customers.size()).isEqualTo(expectedCustomers.size());
         assertThat(customers.get(0).getSurname()).isEqualTo("Farrell");
     }
@@ -99,11 +100,13 @@ public class CustomerControllerTest {
         customers.add(customer2);
         customers.add(customer3);
 
-        Customer retrievedCustomer = customerController.getCustomer("Poiter");
+        when(getCustomersUseCase.getCustomer("Jackson")).thenReturn(customer2);
+
+        Customer retrievedCustomer = customerController.getCustomer("Jackson");
 
         assertThat(retrievedCustomer).isNotNull();
-        assertThat(retrievedCustomer.getSurname()).isEqualTo("Poiter");
-        assertThat(retrievedCustomer.getFirstName()).isEqualTo("Sidney");
+        assertThat(retrievedCustomer.getSurname()).isEqualTo("Jackson");
+        assertThat(retrievedCustomer.getFirstName()).isEqualTo("Samuel");
 
     }
 }
