@@ -10,4 +10,8 @@ public class GetCustomersUseCase {
     public List<Customer> getCustomers() {
         return new ArrayList();
     }
+
+    public Customer getCustomer(String surname) {
+        return null;
+    }
 }

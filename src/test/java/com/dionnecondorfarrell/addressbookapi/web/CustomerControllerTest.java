@@ -68,4 +68,43 @@ public class CustomerControllerTest {
         assertThat(customers.get(0).getSurname()).isEqualTo("Farrell");
     }
 
+    @Test
+    public void test_retrieves_a_customer_by_surname() {
+        List<Customer> customers = new ArrayList<>();
+        final Customer customer1 = Customer.builder()
+                .firstName("Sharon")
+                .surname("Stone")
+                .id("sharon@dcfhosting.co.uk")
+                .address("910 Anywhere Street")
+                .postCode("E17 7TR")
+                .build();
+
+        final Customer customer2 = Customer.builder()
+                .firstName("Samuel")
+                .surname("Jackson")
+                .id("samuel@dcfhosting.cco.uk")
+                .address("109 Anywhere Street")
+                .postCode("E17 6HH")
+                .build();
+
+        final Customer customer3 = Customer.builder()
+                .firstName("Danny")
+                .surname("Glover")
+                .id("danny@dcfhosting.co.uk")
+                .address("876 Anywhere Street")
+                .postCode("E17 8RT")
+                .build();
+
+        customers.add(customer1);
+        customers.add(customer2);
+        customers.add(customer3);
+
+
+        Customer retrievedCustomer = getCustomersUseCase.getCustomer("Poiter");
+
+        assertThat(retrievedCustomer).isNotNull();
+        assertThat(retrievedCustomer.getSurname()).isEqualTo("Poiter");
+        assertThat(retrievedCustomer.getFirstName()).isEqualTo("Sidney");
+
+    }
 }
