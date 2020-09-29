@@ -1,54 +1,35 @@
 package com.dionnecondorfarrell.addressbookapi.model;
 
-import javax.persistence.*;
-import java.util.Objects;
+import lombok.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Data
+@Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@Table(name="customers")
 public class Customer {
 
-    private int id;
+    @Id
+    @Column(name="email")
+    private String id;
 
+    @Column(name="first_name")
     private String firstName;
 
+    @Column(name="surname")
     private String surname;
 
+    @Column(name="address")
     private String address;
 
+    @Column(name="post_code")
     private String postCode;
 
-    public Customer() {
-
-    }
-
-    public Customer(String firstName, String surname, String address, String postCode){
-        this.firstName = firstName;
-        this.surname = surname;
-        this.address = address;
-        this.postCode = postCode;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id,surname, firstName);
-    }
 }
