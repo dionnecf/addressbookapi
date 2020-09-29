@@ -48,13 +48,13 @@ public class CustomerControllerTest {
 
         final Customer customer3 = Customer.builder()
                 .firstName("Sidney")
-                .surname("Portier")
+                .surname("Poitier")
                 .id("sidney@dcfhosting.co.uk")
                 .address("678 Anywhere Street")
                 .postCode("E17 6AA")
                 .build();
 
-        when(getCustomersUseCase.execute()).thenReturn(expectedCustomers);
+        when(getCustomersUseCase.getCustomers()).thenReturn(expectedCustomers);
 
         expectedCustomers.add(customer1);
         expectedCustomers.add(customer2);
@@ -65,6 +65,7 @@ public class CustomerControllerTest {
 
         //assert
         assertThat(customers.size()).isEqualTo(expectedCustomers.size());
-        assertThat(customers.get(0).getSurname()).isEqualTo("Portier");
+        assertThat(customers.get(0).getSurname()).isEqualTo("Farrell");
     }
+
 }

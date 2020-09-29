@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerController {
+
+    private GetCustomersUseCase getCustomersUseCase;
+
     public CustomerController(GetCustomersUseCase getCustomersUseCase) {
+        this.getCustomersUseCase = getCustomersUseCase;
     }
 
     public List<Customer> getCustomers() {
-        return new ArrayList<>();
+        return getCustomersUseCase.getCustomers();
     }
 }
