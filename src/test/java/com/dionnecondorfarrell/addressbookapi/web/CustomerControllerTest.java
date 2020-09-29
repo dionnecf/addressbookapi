@@ -6,12 +6,10 @@ import com.dionnecondorfarrell.addressbookapi.model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 public class CustomerControllerTest {
@@ -54,17 +52,19 @@ public class CustomerControllerTest {
                 .postCode("E17 6AA")
                 .build();
 
-        when(getCustomersUseCase.getCustomers()).thenReturn(expectedCustomers);
-
         expectedCustomers.add(customer1);
         expectedCustomers.add(customer2);
         expectedCustomers.add(customer3);
+
+        when(getCustomersUseCase.getCustomers()).thenReturn(expectedCustomers);
 
         //act
         List<Customer> customers = customerController.getCustomers();
 
         //assert
+        verify(getCustomersUseCase).getCustomers();
         assertThat(customers).isNotNull();
+        assertThat(customers).isNotEmpty();
         assertThat(customers.size()).isEqualTo(expectedCustomers.size());
         assertThat(customers.get(0).getSurname()).isEqualTo("Farrell");
     }
@@ -104,6 +104,7 @@ public class CustomerControllerTest {
 
         Customer retrievedCustomer = customerController.getCustomer("Jackson");
 
+        verify(getCustomersUseCase).getCustomer("Jackson");
         assertThat(retrievedCustomer).isNotNull();
         assertThat(retrievedCustomer.getSurname()).isEqualTo("Jackson");
         assertThat(retrievedCustomer.getFirstName()).isEqualTo("Samuel");

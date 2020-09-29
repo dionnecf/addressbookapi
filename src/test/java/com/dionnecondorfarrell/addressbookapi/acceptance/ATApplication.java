@@ -29,7 +29,7 @@ public class ATApplication {
         });
 
         assertThat((response).getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().size()).isEqualTo(5);
+        assertThat(response.getBody().size()).isEqualTo(3);
     }
 
    @Test
@@ -38,7 +38,6 @@ public class ATApplication {
 
         assertThat((response).getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(requireNonNull(response.getBody()).getSurname()).isEqualTo("Farrell");
-
     }
     //test call to api with not found response
 }
