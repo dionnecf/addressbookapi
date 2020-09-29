@@ -17,4 +17,8 @@ public class CustomerController {
     public List<Customer> getCustomers() {
         return getCustomersUseCase.getCustomers();
     }
+
+    public Customer getCustomer(String poiter) {
+        return null;
+    }
 }

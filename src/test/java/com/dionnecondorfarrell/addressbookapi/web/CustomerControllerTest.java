@@ -99,8 +99,7 @@ public class CustomerControllerTest {
         customers.add(customer2);
         customers.add(customer3);
 
-
-        Customer retrievedCustomer = getCustomersUseCase.getCustomer("Poiter");
+        Customer retrievedCustomer = customerController.getCustomer("Poiter");
 
         assertThat(retrievedCustomer).isNotNull();
         assertThat(retrievedCustomer.getSurname()).isEqualTo("Poiter");
