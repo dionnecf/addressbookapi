@@ -4,7 +4,7 @@ Simple project to build a REST API in using TDD.
 
 This project uses the following:
 
-* Java 11 (LTS)
+* Java 11 (LTS) - 11.0.8
 
 * Spring Boot Starter Parent 2.1.6
 
@@ -20,10 +20,13 @@ This project uses the following:
 
 * Spring Boot Starter Maven Plugin
 
-* Intelli-J IDE
+* Intelli-J IDE 2018.3
 
-* Lombok
+* Lombok 1.18.12
 
+* Mockito 2.23.0
+
+# Endpoints
 
 The project will expose the following endpoints:
 
