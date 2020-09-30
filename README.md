@@ -49,7 +49,7 @@ a 200 OK HTTP response
 a list of customers in the system as a JSON object.
 If there are no customers in the system, the endpoint will respond with an empty JSON object.
 
-Use Postman or Browser
+Using Postman or a Browser:
 
 http://localhost:8080/addressbookapi/customers
 Data should return like this:
@@ -100,7 +100,7 @@ a 200 OK HTTP response
 a list of customers in the system that match that surname as a JSON object.
 If there are no customers in the system, the endpoint will respond with an empty JSON object.
 
-Use Postman or Browser
+Using Postman or a Browser:
 
 http://localhost:[port number allocated - usually 8080]/addressbookapi/customers/Farrell
 
@@ -121,6 +121,7 @@ Search for a customer with a surname that doesn't exist will result in a 404 Not
 Example 3: curl "localhost:8080/addressbookapi/customers/Smith" - This customer does not exist in the database
 
 a 404 NOT_FOUND HTTP response
+
 JSON repsonse with error:
 
 {
