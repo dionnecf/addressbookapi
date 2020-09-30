@@ -47,11 +47,31 @@ public class CustomerRepositoryTests {
     }
 
     @Test
-    public void test_retrieving_all_customers() {
+    public void test_retrieving_all_customers_using_repo() {
 
        final List<Customer> actualCustomers = customerRepository.findAll();
 
        assertThat(actualCustomers).isNotNull();
        assertThat(actualCustomers).containsAll(asList(customers.get(0), customers.get(1)));
+    }
+
+    @Test
+    public void test_retrieving_customer_by_surname_using_repo() {
+
+        String expectedCustomerSurname = "Staywell";
+
+        final Customer actualCustomer = customerRepository.findBySurname(expectedCustomerSurname);
+
+        assertThat(actualCustomer).isNotNull();
+        assertThat(actualCustomer.getSurname()).isEqualTo(expectedCustomerSurname);
+    }
+
+    @Test
+    public void test_retrieving_customer_by_surname_with_a_surname_that_doesnt_exist() {
+        String noneExistentSurname = "Sharp";
+
+        final Customer actualCustomer = customerRepository.findBySurname(noneExistentSurname);
+        assertThat(actualCustomer).isNull();
+
     }
 }
