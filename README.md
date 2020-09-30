@@ -1,6 +1,8 @@
 # addressbookapi
 
-Simple project to build a REST API in using TDD.
+Simple project to build a REST API Address Book of Customers using TDD.
+The API has the ability to search a
+list of customers, and also retrieve a customer by their surname.
 
 This project uses the following:
 
