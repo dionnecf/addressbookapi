@@ -37,51 +37,18 @@ A GET request to the endpoint will return existing customers in the system.
 # Retrieval of a customer by surname
 A GET request to the endpoint will return an existing customer matching the surname in the system.
 
-Example 1:
+# Example 1:
 
 curl "localhost:8080/addressbookapi/customers"
-To such a request, the system will respond with:
+the system will respond with:
 
 a 200 OK HTTP response
 a list of customers in the system as a JSON object.
 If there are no customers in the system, the endpoint will respond with an empty JSON object.
 
-Example 2:
-curl "localhost:8080/addressbookapi/customers/Farrell"
-
-To such a request, the system will respond with:
-
-a list of customers in the system that match that surname as a JSON object.
-If there are no customers in the system, the endpoint will respond with an empty JSON object.
-
-# Non-happy cases
-
-Search for a customer with a surname that doesn't exist will result in a 404 Not Found response
-
-Example 3: curl "localhost:8080/addressbookapi/customers/Smith" - This customer does not exist in the database
-
-
-
-As this project is using lombok, it is recommended to install a lombok plugin for your favourite IDE.
-
-For example, if you're using IntelliJ IDEA, make sure to install this lombok plugin by going to the Preferences | Plugins | Marketplace - search for `Lombok`.
-
-
-# Running the application locally
-To run the application locally, use the following command:
-
-on Unix-like systems:
-./mvnw spring-boot:run
-
-on Mac Pro:
-mvn spring-boot:run
-
-on Windows:
-./mvnw.cmd spring-boot:run
-
-
 Use Postman or Browser
-http://localhost:[port number allocated - usually 8080]/addressbookapi/customers
+
+http://localhost:8080/addressbookapi/customers
 Data should return like this:
 
 [
@@ -122,9 +89,18 @@ Data should return like this:
     }
 ]
 
+# Example 2:
+curl "localhost:8080/addressbookapi/customers/Farrell"
+the system will respond with:
+
+a 200 OK HTTP response
+a list of customers in the system that match that surname as a JSON object.
+If there are no customers in the system, the endpoint will respond with an empty JSON object.
 
 Use Postman or Browser
+
 http://localhost:[port number allocated - usually 8080]/addressbookapi/customers/Farrell
+
 Data should return like this:
 
 {
@@ -134,3 +110,45 @@ Data should return like this:
     "address": "123 Anywhere Street",
     "postCode": "E17 6PP"
 }
+
+# Non-happy cases
+
+Search for a customer with a surname that doesn't exist will result in a 404 Not Found response
+
+Example 3: curl "localhost:8080/addressbookapi/customers/Smith" - This customer does not exist in the database
+
+a 404 NOT_FOUND HTTP response
+JSON repsonse with error:
+
+{
+    "timestamp": "2020-09-30T06:06:11.315+0000",
+    "status": 404,
+    "error": "Not Found",
+    "message": "No message available",
+    "path": "/addressbookapi/customers/Smith"
+}
+
+
+# Lombok
+
+As this project is using lombok, it is recommended to install a lombok plugin for your favourite IDE.
+
+For example, if you're using IntelliJ IDEA, make sure to install this lombok plugin by going to the Preferences | Plugins | Marketplace - search for `Lombok`, and install and follow the instructions.
+
+
+# Running the application locally
+To run the application locally, use the following command:
+
+on Unix-like systems:
+./mvnw spring-boot:run
+
+on Mac Pro:
+mvn spring-boot:run
+
+on Windows:
+./mvnw.cmd spring-boot:run
+
+
+
+
+
