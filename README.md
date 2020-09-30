@@ -36,12 +36,12 @@ The project will expose the following endpoints:
 
 * /addressbookapi/customers that allows:
 
-# Retrieval of list of customers
+Retrieval of list of customers
 A GET request to the endpoint will return existing customers in the system.
 
 * /addressbookapi/customers/{surname} that allows:
 
-# Retrieval of a customer by surname
+Retrieval of a customer by surname
 A GET request to the endpoint will return an existing customer matching the surname in the system.
 
 # Example 1:
