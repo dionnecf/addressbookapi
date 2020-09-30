@@ -191,7 +191,7 @@ or
 
 
 //build and package the application and execute the jar
-
+./mvnw.cmd clean package spring-boot:repackage
 java -jar target/addressbookapi-0.0.1.jar
 
 
