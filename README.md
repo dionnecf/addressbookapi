@@ -4,6 +4,8 @@ Built a REST API address book of customers.
 The API has the ability to retrieve a
 list of customers, and also search for a customer by their surname.
 
+Accepts GET requests only at this stage.
+
 This project uses the following:
 
 * Java 11 (LTS) - 11.0.8
