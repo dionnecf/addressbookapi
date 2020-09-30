@@ -147,15 +147,38 @@ For example, if you're using IntelliJ IDEA, make sure to install this lombok plu
 # Running the application locally
 To run the application locally, use the following command in the project folder(where the pom.xml file is located):
 
+
+on Mac:
+mvn spring-boot:run
+
+or
+
+//build and package the application and execute the jar
+
+mvn clean package spring-boot:repackage
+java -jar target/addressbookapi-0.0.1.jar
+
+
+
 on Unix-like systems:
 ./mvnw spring-boot:run
 
-on Mac Pro:
-mvn spring-boot:run
+or
+
+//build and package the application and execute the jar
+
+./mvnw clean package spring-boot:repackage
+java -jar target/addressbookapi-0.0.1.jar
+
+
 
 on Windows:
 ./mvnw.cmd spring-boot:run
 
+or
+
+//build and package the application and execute the jar
+java -jar target/addressbookapi-0.0.1.jar
 
 
 
