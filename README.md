@@ -106,7 +106,7 @@ If there are no customers in the system, the endpoint will respond with an empty
 
 Using Postman or a Browser:
 
-http://localhost:[port number allocated - usually 8080]/addressbookapi/customers/Farrell
+http://localhost:8080/addressbookapi/customers/Farrell
 
 Data should return like this:
 
