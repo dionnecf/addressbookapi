@@ -32,6 +32,12 @@ public class CustomerController {
     @GetMapping(value = "/customers/{surname}", produces = APPLICATION_JSON_VALUE)
     @ResponseBody
     public Customer getCustomer(@PathVariable String surname) {
-        return getCustomersUseCase.getCustomer(surname);
+
+        Customer customer = getCustomersUseCase.getCustomer(surname);
+
+        if(customer == null) {
+            throw new CustomerNotFoundException("Not Found");
+        }
+        return customer;
     }
 }

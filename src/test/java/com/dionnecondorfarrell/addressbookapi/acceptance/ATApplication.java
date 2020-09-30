@@ -1,6 +1,7 @@
 package com.dionnecondorfarrell.addressbookapi.acceptance;
 
 import com.dionnecondorfarrell.addressbookapi.core.model.Customer;
+import com.dionnecondorfarrell.addressbookapi.core.model.CustomerError;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ATApplication {
 
     //test call to api with positive response
+    private static final String URL_CUSTOMERS = "/addressbookapi/customers";
+    private static final String URL_CUSTOMER_BY_SURNAME = "/addressbookapi/customers/Farrell";
+    private static final String URL_CUSTOMER_BY_NONE_EXISTENT_SURNAME = "/addressbookapi/customers/Smith";
 
     @Autowired
     TestRestTemplate restTemplate;
@@ -30,7 +34,7 @@ public class ATApplication {
                 .postCode("E17 6PP")
                 .build();
         final ResponseEntity<List<Customer>> response =
-                restTemplate.exchange("/addressbookapi/customers",
+                restTemplate.exchange(URL_CUSTOMERS,
                         HttpMethod.GET, new HttpEntity<>(new HttpHeaders()),
                         new ParameterizedTypeReference<List<Customer>>() {
         });
@@ -42,9 +46,18 @@ public class ATApplication {
 
    @Test
     public void return_an_address_book_entry_by_surname_response() {
-        ResponseEntity<Customer> response = restTemplate.getForEntity("/addressbookapi/customers/Farrell", Customer.class);
+        ResponseEntity<Customer> response = restTemplate.exchange(URL_CUSTOMER_BY_SURNAME, HttpMethod.GET,
+                new HttpEntity<>(new HttpHeaders()), Customer.class);
 
         assertThat((response).getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(requireNonNull(response.getBody()).getSurname()).isEqualTo("Farrell");
+    }
+
+    @Test
+    public void return_an_error_message_when_surname_not_found() {
+        ResponseEntity<Customer> response = restTemplate.exchange(URL_CUSTOMER_BY_NONE_EXISTENT_SURNAME,
+                HttpMethod.GET, new HttpEntity<>(new HttpHeaders()), Customer.class);
+
+        assertThat((response).getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 }
