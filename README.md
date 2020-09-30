@@ -141,7 +141,7 @@ For example, if you're using IntelliJ IDEA, make sure to install this lombok plu
 
 
 # Running the application locally
-To run the application locally, use the following command:
+To run the application locally, use the following command in the project folder(where the pom.xml file is located):
 
 on Unix-like systems:
 ./mvnw spring-boot:run
