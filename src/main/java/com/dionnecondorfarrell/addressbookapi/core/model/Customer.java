@@ -1,4 +1,4 @@
-package com.dionnecondorfarrell.addressbookapi.model;
+package com.dionnecondorfarrell.addressbookapi.core.model;
 
 import lombok.*;
 

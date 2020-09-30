@@ -1,7 +1,8 @@
 package com.dionnecondorfarrell.addressbookapi.core;
 
 
-import com.dionnecondorfarrell.addressbookapi.model.Customer;
+import com.dionnecondorfarrell.addressbookapi.core.repository.CustomerRepository;
+import com.dionnecondorfarrell.addressbookapi.core.model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-public class GetCustomersUseCaseTest {
+public class GetCustomersUseCaseTests {
 
     private CustomerRepository customerRepository;
     private GetCustomersUseCase getCustomersUseCase;
@@ -58,13 +59,12 @@ public class GetCustomersUseCaseTest {
     @Test
     public void test_invoke_the_repo_to_retrieve_customer_by_surname() {
 
-        when(customerRepository.getBySurname("Staywell")).thenReturn(customers.get(1));
+        when(customerRepository.findBySurname("Staywell")).thenReturn(customers.get(1));
 
         Customer actualCustomer = getCustomersUseCase.getCustomer("Staywell");
 
-        verify(customerRepository).getBySurname("Staywell");
+        verify(customerRepository).findBySurname("Staywell");
         assertThat(actualCustomer).isNotNull();
         assertThat(actualCustomer.getSurname()).isEqualTo("Staywell");
     }
-
 }

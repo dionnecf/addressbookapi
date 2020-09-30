@@ -2,7 +2,7 @@ package com.dionnecondorfarrell.addressbookapi.web;
 
 
 import com.dionnecondorfarrell.addressbookapi.core.GetCustomersUseCase;
-import com.dionnecondorfarrell.addressbookapi.model.Customer;
+import com.dionnecondorfarrell.addressbookapi.core.model.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomerControllerTest {
+public class CustomerControllerTests {
 
     private CustomerController customerController;
     private GetCustomersUseCase getCustomersUseCase;
